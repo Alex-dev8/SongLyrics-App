@@ -12,7 +12,7 @@ class Song: Identifiable, Decodable {
     var title = "Title"
     var artist = "Artist"
     var album = "Album"
-    var release = 2021
+    var release = "2021"
     var cover = "supernatural"
     var favourite = false
     var rating = 3

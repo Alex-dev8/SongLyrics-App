@@ -15,11 +15,26 @@ struct SongCard: View {
     
     var body: some View {
         VStack {
-            Text("Lyrics")
-            Image(song.cover)
-                .resizable()
-                .scaledToFit()
-                .padding(40)
+            VStack(alignment: .leading) {
+                Text("Artist: \(song.artist)")
+                Text("Song: \(song.title)")
+                Text("Album: \(song.album)")
+                Text("Release date: \(song.release)")
+                
+            }
+            NavigationLink {
+                LyricsView(song: song)
+            } label: {
+                VStack(spacing: 1) {
+                    Text("Lyrics")
+                        .foregroundColor(.primary)
+                    Image(song.cover)
+                        .resizable()
+                        .scaledToFit()
+                    .padding()
+                }
+                .padding()
+            }
             Button {
                 isFavourite.toggle()
                 model.songFavourite(forID: song.id, isFavourite: isFavourite)
@@ -51,7 +66,7 @@ struct SongCard: View {
             
         }
         .navigationTitle(song.title)
-        .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarTitleDisplayMode(.inline)
         .onChange(of: rating, perform: { newValue in
             model.changeRating(forID: song.id, newRating: rating)
         })

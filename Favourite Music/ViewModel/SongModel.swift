@@ -13,4 +13,18 @@ class SongModel: ObservableObject {
     init() {
         self.songs = DataService.getLocalFiles()
     }
+    
+    func songFavourite(forID: Int, isFavourite: Bool) {
+        if let index = songs.firstIndex(where: { $0.id == forID}) {
+            songs[index].favourite = isFavourite
+        }
+    }
+    
+    func changeRating(forID: Int, newRating: Int) {
+        if let index = songs.firstIndex(where: { $0.id == forID }) {
+            songs[index].rating = newRating
+        }
+            
+    }
+    
 }

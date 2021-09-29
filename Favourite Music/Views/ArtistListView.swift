@@ -15,12 +15,15 @@ struct ArtistListView: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 10) {
                     ForEach(model.songs) { song in
-                        HStack {
-                            Image(song.cover)
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                            Text(song.artist)
-                        }
+                        NavigationLink(destination: SongCard(song: song), label: {
+                            HStack {
+                                Image(song.cover)
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                Text(song.artist)
+                                    .foregroundColor(.primary)
+                            }
+                        })
                     }
                     .padding(.horizontal)
                     .padding(.top)
